@@ -6,13 +6,13 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:20:31 by radib             #+#    #+#             */
-/*   Updated: 2025/05/19 14:58:52 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/19 18:51:15 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
+# include "printf/ft_printf.h"
 # include <stddef.h>
 # include <stdio.h>
 # include <limits.h>
@@ -26,7 +26,7 @@ typedef struct s_list
 	struct s_list	*next;
 	struct s_list	*previous;
 }	t_list;
-
+int		ft_printf(const char *format_str, ...);
 void	pa(t_list **list_a, t_list **list_b);
 void	pb(t_list **list_a, t_list **list_b);
 void	rra(t_list **list);

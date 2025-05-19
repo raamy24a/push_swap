@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 14:23:00 by radib             #+#    #+#             */
-/*   Updated: 2025/05/19 14:00:00 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/19 18:45:23 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,18 @@ void	reverse_rotate(t_list **list)
 void	rra(t_list **list)
 {
 	reverse_rotate(list);
-	printf("%s\n", "rra");
+	ft_printf("%s\n", "rra");
 }
 
 void	rrb(t_list **list)
 {
 	reverse_rotate(list);
-	printf("%s\n", "rrb");
+	ft_printf("%s\n", "rrb");
 }
 
 void	rrr(t_list **list1, t_list **list2)
 {
 	reverse_rotate(list1);
 	reverse_rotate(list2);
-	printf("%s\n", "rrr");
+	ft_printf("%s\n", "rrr");
 }

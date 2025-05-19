@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 10:32:49 by radib             #+#    #+#             */
-/*   Updated: 2025/05/19 15:00:25 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/19 16:03:39 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ t_list	*ft_lstlast(t_list *lst)
 void	ft_lstadd_back(t_list **lst, int new)
 {
 	t_list	*temp;
+	t_list	*temp_list;
 
-	if (!lst || !new)
+	if (!lst)
 		return ;
 	temp = ft_lstlast(*lst);
 	if (!temp)
@@ -42,6 +43,8 @@ void	ft_lstadd_back(t_list **lst, int new)
 		temp -> previous = (*lst);
 		return ;
 	}
+	temp_list = malloc(sizeof(t_list));
+	temp -> next = temp_list;
 	temp -> next->content = new;
-	temp ->previous = temp;
+	temp_list ->previous = temp;
 }

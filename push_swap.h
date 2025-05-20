@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:20:31 by radib             #+#    #+#             */
-/*   Updated: 2025/05/19 18:51:15 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/20 16:32:38 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,7 @@ void	sb(t_list *list_a);
 void	ss(t_list *list_a, t_list *list_b);
 int		ft_atoi(const char *nptr);
 void	ft_lstadd_back(t_list **lst, int new);
+void	findorder(int size, int *sorted_list, t_list **a, t_list **b);
+int		*ft_sort_int_tab(int *tab, int size);
 
 #endif

@@ -6,16 +6,28 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:09:37 by radib             #+#    #+#             */
-/*   Updated: 2025/05/19 18:28:07 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/20 15:47:14 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sortbig(t_list **a, t_list **b)
+void	create_array(t_list **a, t_list **b, int size)
 {
-	pa(a, b);
-	pb(a, b);
+	int		*list;
+	t_list	*temp;
+	int		i;
+
+	i = 0;
+	temp = (*a);
+	list = malloc(sizeof(int) * size);
+	while (i++ < size)
+	{
+		list[i - 1] = temp->content;
+		temp = temp->next;
+	}
+	ft_sort_int_tab(list, size);
+	findorder(size, list, a, b);
 }
 
 void	sortsmall(t_list **a)
@@ -50,17 +62,26 @@ void	sortsmedium(t_list **a, t_list **b)
 		rra(a);
 }
 
-void	chose_sort(t_list **a, int argc)
+void	chose_sort(t_list **a)
 {
 	t_list	**b;
+	t_list	*temp;
+	int		i;
 
+	i = 1;
+	temp = (*a);
+	while (temp->next)
+	{
+		temp = temp->next;
+		i++;
+	}
 	b = malloc(sizeof(t_list));
-	if (argc == 4)
+	if (i == 3)
 		sortsmall(a);
-	else if (argc == 5)
+	else if (i == 4)
 		sortsmedium(a, b);
-	else if (argc < 6)
-		sortbig(a, b);
+	else if (i > 4)
+		create_array(a, b, i);
 }
 
 int	main(int argc, char *argv[])
@@ -73,7 +94,7 @@ int	main(int argc, char *argv[])
 	a = malloc(sizeof(t_list));
 	if (!a)
 		return (0);
-	a->content = ft_atoi(argv[1]);
+	a->content = ft_atoi(argv[argc - argc + 1]);
 	a->previous = NULL;
 	a->next = NULL;
 	i = 2;
@@ -83,7 +104,7 @@ int	main(int argc, char *argv[])
 		ft_lstadd_back(&a, tempnbr);
 		i++;
 	}
-	chose_sort(&a, argc);
+	chose_sort(&a);
 	temp = a;
 	i = 1;
 	while (i < argc)

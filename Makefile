@@ -1,6 +1,6 @@
 NAME = push_swap
 
-SOURCES = ft_push_swap.c push.c reverse_rotate.c swap.c rotate.c ft_atoi.c ft_lstadd_back.c printf/ft_printf.c printf/ft_putnbr.c
+SOURCES = ft_push_swap.c push.c reverse_rotate.c swap.c rotate.c ft_atoi.c ft_lstadd_back.c printf/ft_printf.c printf/ft_putnbr.c checkifgood.c ft_sort_int_tab.c
 
 OBJECTS = $(SOURCES:.c=.o)
 

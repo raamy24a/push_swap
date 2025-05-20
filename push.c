@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 14:22:37 by radib             #+#    #+#             */
-/*   Updated: 2025/05/19 18:48:58 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/20 14:12:57 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,21 @@
 
 void	ft_lstadd_front(t_list **destination, t_list **source)
 {
-	if (!source)
+	t_list	*tmp;
+
+	if (!source || !*source)
 		return ;
-	if (!*destination)
-	{
-		*destination = malloc(sizeof(t_list));
-		(*destination)->content = (*source)->content;
-		(*destination)-> next = NULL;
-		(*destination)-> previous = NULL;
-	}
-	else
-	{
-		(*source)-> next = *destination;
-		(*destination) = (*source);
-		(*destination)-> previous = NULL;
-		(*destination)-> next -> previous = *destination;
-	}
-	if ((*source)-> next)
-	{
-		(*source) = (*source)-> next;
-		(*source)-> previous = NULL;
-	}
-	else
-		source = NULL;
+	tmp = *source;
+	*source = tmp->next;
+	if (*source)
+		(*source)->previous = NULL;
+	tmp->next = *destination;
+	tmp->previous = NULL;
+	if (*destination)
+		(*destination)->previous = tmp;
+	*destination = tmp;
 }
+
 
 void	pa(t_list **list_a, t_list **list_b)
 {

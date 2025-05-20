@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:09:37 by radib             #+#    #+#             */
-/*   Updated: 2025/05/20 15:47:14 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/20 17:09:18 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void	chose_sort(t_list **a)
 int	main(int argc, char *argv[])
 {
 	t_list	*a;
-	t_list	*temp;
 	int		i;
 	int		tempnbr;
 
@@ -105,13 +104,6 @@ int	main(int argc, char *argv[])
 		i++;
 	}
 	chose_sort(&a);
-	temp = a;
 	i = 1;
-	while (i < argc)
-	{
-		printf("%d\n", temp->content);
-		temp = temp->next;
-		i++;
-	}
 	return (0);
 }

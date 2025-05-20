@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:20:31 by radib             #+#    #+#             */
-/*   Updated: 2025/05/20 16:32:38 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/20 17:39:43 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,24 @@ void	rr(t_list **listb, t_list **lista);
 void	sa(t_list *list_a);
 void	sb(t_list *list_a);
 void	ss(t_list *list_a, t_list *list_b);
+int		spa(t_list **list_a, t_list **list_b);
+int		spb(t_list **list_a, t_list **list_b);
+int		srra(t_list **list);
+int		srrb(t_list **list);
+int		srrr(t_list **list1, t_list **list2);
+int		sra(t_list **list);
+int		sra(t_list **list);
+int		srr(t_list **listb, t_list **lista);
+int		ssa(t_list *list_a);
+int		ssb(t_list *list_a);
+int		sss(t_list *list_a, t_list *list_b);
 int		ft_atoi(const char *nptr);
 void	ft_lstadd_back(t_list **lst, int new);
 void	findorder(int size, int *sorted_list, t_list **a, t_list **b);
 int		*ft_sort_int_tab(int *tab, int size);
+void	ft_lstadd_front(t_list **destination, t_list **source);
+void	reverse_rotate(t_list **list);
+void	rotate(t_list **list);
+void	swap(t_list *list);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:03:40 by radib             #+#    #+#             */
-/*   Updated: 2025/05/20 17:21:23 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/20 18:46:38 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ void	findorder(int size, int *l, t_list **a, t_list **b)
 	while (i < size)
 	{
 		t = (*a);
+		j = 0;
 		while (j++ < size / 2 && t->content != l[i] && t->content != l[i + 1])
 			t = t->next;
-		j = 0;
 		if (t->content == l[i] || t->content == l[i + 1])
 			i = rotateorder(i, l, a, b);
 		else
@@ -71,3 +71,5 @@ void	findorder(int size, int *l, t_list **a, t_list **b)
 	while (i-- > -1)
 		pa (a, b);
 }
+
+// demain a essayer c'est de separer la liste en morceaux de 5 ;) bonne chance a toi

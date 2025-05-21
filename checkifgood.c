@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:03:40 by radib             #+#    #+#             */
-/*   Updated: 2025/05/21 19:31:11 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/21 22:45:08 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	rotateorder(int siz, int i, t_list **a, t_list **b)
 	{
 		pa(a, b);
 		t = (*b);
-		while (j++ < ((siz - i) / 2) && t->index != i)
+		while (j++ < ((siz - i - 1) / 2) && t->index != i)
 			t = t->next;
-		if (j < ((siz - i) / 2))
+		if (j < ((siz - i - 1) / 2))
 			while (i != (*b)->index)
 				rb(b);
 		else
@@ -52,9 +52,9 @@ int	reverse_rotateorder(int siz, int i, t_list **a, t_list **b)
 	{
 		pa(a, b);
 		t = (*b);
-		while (j++ < ((siz - i) / 2) && t->index != i)
+		while (j++ < ((siz - i - 1) / 2) && t->index != i)
 			t = t->next;
-		if (j < ((siz - i) / 2))
+		if (j < ((siz - i - 1) / 2))
 			while (i != (*b)->index)
 				rb(b);
 		else
@@ -93,7 +93,8 @@ void	findorderr(int siz, t_list **a, t_list **b)
 void	findorder(int size, t_list **a, t_list **b)
 {
 	chunkingloop(size, 5.0, a, b);
+	// chunking(size, 0, a, b);
 	findorderr(size, a, b);
-	if ((*b)->index)
-		pa(a, b);
+	// if ((*b)->index)
+		// pa(a, b);
 }

@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 18:52:12 by radib             #+#    #+#             */
-/*   Updated: 2025/05/21 19:27:40 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/21 22:26:49 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,17 @@ int	chunkingloop(int size, double n, t_list **a, t_list **b)
 {
 	t_list		*t;
 	int			i;
-	int			j;
 	double		k;
 
-	j = 0;
 	k = n - 1;
-	while (1.0 / (n / k))
+	while (k)
 	{
 		i = 0;
-		while (i < size - j)
+		while (i < size - (1 - (k + 1) / n) * size)
 		{
 			t = (*a);
-			if (t->index > (size * 1.0 / (n / k)))
-				j = pb(a, b);
+			if (t->index > (size * (k / n)))
+				pb(a, b);
 			else
 				ra(a);
 			t = t->next;
@@ -38,5 +36,5 @@ int	chunkingloop(int size, double n, t_list **a, t_list **b)
 	}
 	while (*a)
 		pb(a, b);
-	return (j);
+	return (size);
 }

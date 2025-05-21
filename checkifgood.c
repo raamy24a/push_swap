@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:03:40 by radib             #+#    #+#             */
-/*   Updated: 2025/05/20 18:46:38 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/21 14:31:02 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,26 +50,48 @@ int	reverse_rotateorder(int i, int *l, t_list **a, t_list **b)
 	return (i);
 }
 
-void	findorder(int size, int *l, t_list **a, t_list **b)
+// void	findorderr(int size, int *l, t_list **a, t_list **b)
+// {
+// 	int		i;
+// 	int		j;
+// 	t_list	*t;
+
+// 	i = 0;
+// 	while (i < size)
+// 	{
+// 		t = (*a);
+// 		j = 0;
+// 		while (j++ < size / 2 && t->content != l[i] && t->content != l[i + 1])
+// 			t = t->next;
+// 		if (t->content == l[i] || t->content == l[i + 1])
+// 			i = rotateorder(i, l, a, b);
+// 		else
+// 			i = reverse_rotateorder(i, l, a, b);
+// 	}
+// 	while (i-- > -1)
+// 		pa (a, b);
+// }
+
+void	findorder(int size, t_list **a, t_list **b)
 {
 	int		i;
-	int		j;
 	t_list	*t;
 
 	i = 0;
 	while (i < size)
 	{
 		t = (*a);
-		j = 0;
-		while (j++ < size / 2 && t->content != l[i] && t->content != l[i + 1])
-			t = t->next;
-		if (t->content == l[i] || t->content == l[i + 1])
-			i = rotateorder(i, l, a, b);
+		if (t->index > size / 2)
+			pb(a, b);
 		else
-			i = reverse_rotateorder(i, l, a, b);
+		{
+			pb(a, b);
+			rb(b);
+		}
+		t = t->next;
+		i++;
 	}
+	// findorderr(size, l, a, b);
 	while (i-- > -1)
 		pa (a, b);
 }
-
-// demain a essayer c'est de separer la liste en morceaux de 5 ;) bonne chance a toi

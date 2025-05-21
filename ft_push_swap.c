@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:09:37 by radib             #+#    #+#             */
-/*   Updated: 2025/05/20 17:09:18 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/21 14:42:03 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	create_array(t_list **a, t_list **b, int size)
 	int		*list;
 	t_list	*temp;
 	int		i;
+	int		*s_l;
 
 	i = 0;
 	temp = (*a);
@@ -26,40 +27,9 @@ void	create_array(t_list **a, t_list **b, int size)
 		list[i - 1] = temp->content;
 		temp = temp->next;
 	}
-	ft_sort_int_tab(list, size);
-	findorder(size, list, a, b);
-}
-
-void	sortsmall(t_list **a)
-{
-	while ((*a)->content > (*a)->next->next->content)
-		ra(a);
-	if ((*a)->next->content > (*a)->next->next->content)
-		rra(a);
-	if ((*a)->content > (*a)->next->content)
-		sa(*a);
-}
-
-void	sortsmedium(t_list **a, t_list **b)
-{
-	pb(a, b);
-	sortsmall(a);
-	if ((*a)->next->next->content < ((*b)->content))
-	{
-		pa(a, b);
-		ra(a);
-	}
-	else if ((*a)->content > (*b)->content)
-		pa(a, b);
-	else
-	{
-		while (((*a)->content < (*b)->content))
-			rra(a);
-		rra(a);
-		pa(a, b);
-	}
-	while ((*a)->next->next->next->content < ((*a)->content))
-		rra(a);
+	s_l = ft_sort_int_tab(list, size);
+	list_indexor((*a), s_l, size);
+	findorder(size, a, b);
 }
 
 void	chose_sort(t_list **a)
@@ -84,7 +54,54 @@ void	chose_sort(t_list **a)
 		create_array(a, b, i);
 }
 
-int	main(int argc, char *argv[])
+void	index_correct(t_list *a)
+{
+	t_list	*outer;
+	t_list	*inner;
+	t_list	*head;
+
+	head = a;
+	outer = head;
+	while (outer)
+	{
+		inner = outer->next;
+		while (inner)
+		{
+			if (outer->index == inner->index)
+			{
+				inner->index++;
+			}
+			inner = inner->next;
+		}
+		outer = outer->next;
+	}
+}
+
+void	list_indexor(t_list *a, int *s_l, int size)
+{
+	t_list	*temp;
+	int		i;
+
+	temp = a;
+	while (temp)
+	{
+		i = 0;
+		while (i < size)
+		{
+			if (temp->content == s_l[i])
+			{
+				temp->index = i;
+				break ;
+			}
+			i++;
+		}
+		temp = temp->next;
+	}
+	index_correct(a);
+
+}
+
+t_list	*list_creator(int argc, char*argv[])
 {
 	t_list	*a;
 	int		i;
@@ -103,7 +120,15 @@ int	main(int argc, char *argv[])
 		ft_lstadd_back(&a, tempnbr);
 		i++;
 	}
+	return (a);
+}
+
+int	main(int argc, char *argv[])
+{
+	t_list	*a;
+
+	a = list_creator(argc, argv);
 	chose_sort(&a);
-	i = 1;
+	
 	return (0);
 }

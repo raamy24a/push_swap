@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:20:31 by radib             #+#    #+#             */
-/*   Updated: 2025/05/21 14:43:48 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/21 19:26:24 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_list
 }	t_list;
 int		ft_printf(const char *format_str, ...);
 void	pa(t_list **list_a, t_list **list_b);
-void	pb(t_list **list_a, t_list **list_b);
+int		pb(t_list **list_a, t_list **list_b);
 void	rra(t_list **list);
 void	rrb(t_list **list);
 void	rrr(t_list **list1, t_list **list2);
@@ -62,5 +62,9 @@ t_list	*list_creator(int argc, char*argv[]);
 void	sortsmall(t_list **a);
 void	sortsmedium(t_list **a, t_list **b);
 void	list_indexor(t_list *a, int *s_l, int size);
+int		chunking(int size, int i, t_list **a, t_list **b);
+int		chunkings(int size, int i, t_list **a, t_list **b);
+int		chunkingloop(int size, double n, t_list **a, t_list **b);
+
 
 #endif

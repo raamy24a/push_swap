@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 14:22:37 by radib             #+#    #+#             */
-/*   Updated: 2025/05/20 14:12:57 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/21 19:26:12 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ void	pa(t_list **list_a, t_list **list_b)
 	ft_printf("%s\n", "pa");
 }
 
-void	pb(t_list **list_a, t_list **list_b)
+int	pb(t_list **list_a, t_list **list_b)
 {
 	ft_lstadd_front(list_b, list_a);
 	ft_printf("%s\n", "pb");
+	return (1);
 }

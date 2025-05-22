@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:03:40 by radib             #+#    #+#             */
-/*   Updated: 2025/05/22 04:57:02 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/22 12:22:01 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ int	dist_r(t_list **b, t_list *temp, int i)
 	return (j);
 }
 
-int	dist(t_list **b, t_list *temp, int i)
+int	dist(t_list **b, int i)
 {
-	int	j;
+	t_list	*temp;
+	int		j;
 
 	j = 0;
 	temp = (*b);
@@ -64,7 +65,7 @@ void	findorderr(int toswapina, int size, t_list **a, t_list **b)
 	t_list	*temp;
 
 	i = size - 1;
-	while (i >= 0)
+	while (i > 0)
 	{
 		temp = (*b);
 		if (temp->index == i - toswapina - 1)
@@ -80,7 +81,7 @@ void	findorderr(int toswapina, int size, t_list **a, t_list **b)
 			i--;
 			swapina(toswapina, a);
 		}
-		if (dist(b, temp, i) < i / 2)
+		if (dist(b, i) < (i + 1) / 2)
 			rb(b);
 		else
 			rrb(b);

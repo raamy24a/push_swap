@@ -6,95 +6,91 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:03:40 by radib             #+#    #+#             */
-/*   Updated: 2025/05/21 22:45:08 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/22 04:57:02 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	rotateorder(int siz, int i, t_list **a, t_list **b)
+int	dist_r(t_list **b, t_list *temp, int i)
 {
-	t_list	*t;
 	int		j;
 
 	j = 0;
-	while (i != (*b)->index && i - 1 != (*b)->index)
-		rb(b);
-	if (i - 1 == (*b)->index)
+	temp = (*b);
+	while (temp->next)
+		temp = temp->next;
+	if (!temp->index)
+		return (9999);
+	while (temp->index != i)
 	{
-		pa(a, b);
-		t = (*b);
-		while (j++ < ((siz - i - 1) / 2) && t->index != i)
-			t = t->next;
-		if (j < ((siz - i - 1) / 2))
-			while (i != (*b)->index)
-				rb(b);
-		else
-			while (i != (*b)->index)
-				rrb(b);
-		pa(a, b);
-		sa(*a);
-		return (2);
+		temp = temp->previous;
+		j++;
 	}
-	pa(a, b);
-	return (1);
+	return (j);
 }
 
-int	reverse_rotateorder(int siz, int i, t_list **a, t_list **b)
+int	dist(t_list **b, t_list *temp, int i)
 {
-	t_list	*t;
-	int		j;
+	int	j;
 
 	j = 0;
-	while (i != (*b)->index && i - 1 != (*b)->index)
-		rrb(b);
-	if (i - 1 == (*b)->index)
+	temp = (*b);
+	while (temp->index != i && temp->next)
 	{
-		pa(a, b);
-		t = (*b);
-		while (j++ < ((siz - i - 1) / 2) && t->index != i)
-			t = t->next;
-		if (j < ((siz - i - 1) / 2))
-			while (i != (*b)->index)
-				rb(b);
-		else
-			while (i != (*b)->index)
-				rrb(b);
-		pa(a, b);
-		sa(*a);
-		return (2);
+		temp = temp->next;
+		j++;
 	}
-	pa(a, b);
-	return (1);
+	return (j);
 }
 
-void	findorderr(int siz, t_list **a, t_list **b)
+void	swapina(int toswapina, t_list **a)
+{
+	int	i;
+
+	i = toswapina;
+	while (toswapina--)
+	{
+		sa(*a);
+		ra(a);
+	}
+	while (i--)
+		rra(a);
+}
+
+void	findorderr(int toswapina, int size, t_list **a, t_list **b)
 {
 	int		i;
-	int		j;
-	t_list	*t;
+	t_list	*temp;
 
-	i = 0;
-	siz--;
-	while (i < siz)
+	i = size - 1;
+	while (i >= 0)
 	{
-		t = (*b);
-		j = 0;
-		while (j++ < ((siz - i) / 2) && t->index != siz - i
-			&& t->index != siz - i - 1)
-			t = t->next;
-		if (t->index == siz - i || t->index == siz - i - 1)
-			i += rotateorder(siz, siz - i, a, b);
+		temp = (*b);
+		if (temp->index == i - toswapina - 1)
+		{
+			pa(a, b);
+			i--;
+			toswapina++;
+			temp = (*b);
+		}
+		if (temp->index == i)
+		{
+			pa(a, b);
+			i--;
+			swapina(toswapina, a);
+		}
+		if (dist(b, temp, i) < i / 2)
+			rb(b);
 		else
-			i += reverse_rotateorder(siz, siz - i, a, b);
+			rrb(b);
 	}
 }
 
 void	findorder(int size, t_list **a, t_list **b)
 {
 	chunkingloop(size, 5.0, a, b);
-	// chunking(size, 0, a, b);
-	findorderr(size, a, b);
+	findorderr(0, size, a, b);
 	// if ((*b)->index)
 		// pa(a, b);
 }

@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 14:22:37 by radib             #+#    #+#             */
-/*   Updated: 2025/05/21 19:26:12 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/22 15:31:05 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	ft_lstadd_front(t_list **destination, t_list **source)
 	*source = tmp->next;
 	if (*source)
 		(*source)->previous = NULL;
+	else
+		(*source) = NULL;
 	tmp->next = *destination;
 	tmp->previous = NULL;
 	if (*destination)

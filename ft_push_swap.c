@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:09:37 by radib             #+#    #+#             */
-/*   Updated: 2025/05/21 14:42:03 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/22 13:22:44 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,29 +54,6 @@ void	chose_sort(t_list **a)
 		create_array(a, b, i);
 }
 
-void	index_correct(t_list *a)
-{
-	t_list	*outer;
-	t_list	*inner;
-	t_list	*head;
-
-	head = a;
-	outer = head;
-	while (outer)
-	{
-		inner = outer->next;
-		while (inner)
-		{
-			if (outer->index == inner->index)
-			{
-				inner->index++;
-			}
-			inner = inner->next;
-		}
-		outer = outer->next;
-	}
-}
-
 void	list_indexor(t_list *a, int *s_l, int size)
 {
 	t_list	*temp;
@@ -97,8 +74,6 @@ void	list_indexor(t_list *a, int *s_l, int size)
 		}
 		temp = temp->next;
 	}
-	index_correct(a);
-
 }
 
 t_list	*list_creator(int argc, char*argv[])

@@ -6,57 +6,62 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:03:40 by radib             #+#    #+#             */
-/*   Updated: 2025/05/22 12:22:01 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/22 15:55:17 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	dist_r(t_list **b, t_list *temp, int i)
-{
-	int		j;
-
-	j = 0;
-	temp = (*b);
-	while (temp->next)
-		temp = temp->next;
-	if (!temp->index)
-		return (9999);
-	while (temp->index != i)
-	{
-		temp = temp->previous;
-		j++;
-	}
-	return (j);
-}
-
 int	dist(t_list **b, int i)
 {
 	t_list	*temp;
+	int		sizehalf;
 	int		j;
+	int		trueorfalse;
 
+	sizehalf = i / 2;
 	j = 0;
+	trueorfalse = 0;
 	temp = (*b);
-	while (temp->index != i && temp->next)
+	while (b && j < sizehalf)
 	{
 		temp = temp->next;
 		j++;
+		if (temp->index == i)
+		{
+			trueorfalse = 1;
+			break ;
+		}
 	}
-	return (j);
+	return (trueorfalse);
 }
 
-void	swapina(int toswapina, t_list **a)
+int	swapina(int toswapina, t_list **a)
 {
 	int	i;
+	int	j;
 
+	j = toswapina;
 	i = toswapina;
-	while (toswapina--)
+	while (toswapina)
 	{
+		if (toswapina == 1 && j == 1)
+		{
+			sa(*a);
+			return (j);
+		}
 		sa(*a);
+		if (toswapina == 1)
+			break ;
 		ra(a);
+		toswapina--;
 	}
-	while (i--)
+	while (i > 1)
+	{
 		rra(a);
+		i--;
+	}
+	return (j);
 }
 
 void	findorderr(int toswapina, int size, t_list **a, t_list **b)
@@ -65,13 +70,12 @@ void	findorderr(int toswapina, int size, t_list **a, t_list **b)
 	t_list	*temp;
 
 	i = size - 1;
-	while (i > 0)
+	while (i >= 0)
 	{
 		temp = (*b);
 		if (temp->index == i - toswapina - 1)
 		{
 			pa(a, b);
-			i--;
 			toswapina++;
 			temp = (*b);
 		}
@@ -79,9 +83,10 @@ void	findorderr(int toswapina, int size, t_list **a, t_list **b)
 		{
 			pa(a, b);
 			i--;
-			swapina(toswapina, a);
+			i -= swapina(toswapina, a);
+			toswapina = 0;
 		}
-		if (dist(b, i) < (i + 1) / 2)
+		if (dist(b, i))
 			rb(b);
 		else
 			rrb(b);
@@ -91,7 +96,9 @@ void	findorderr(int toswapina, int size, t_list **a, t_list **b)
 void	findorder(int size, t_list **a, t_list **b)
 {
 	chunkingloop(size, 5.0, a, b);
+	// if (size < 110)
+	// 	chunkings(size, 0, a, b);
+	// else
+	// 	chunkingloop(size, 7.0, a, b);
 	findorderr(0, size, a, b);
-	// if ((*b)->index)
-		// pa(a, b);
 }

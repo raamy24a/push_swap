@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:03:40 by radib             #+#    #+#             */
-/*   Updated: 2025/05/22 18:04:11 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/22 18:21:44 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ void	findorderr(int toswapina, int size, t_list **a, t_list **b)
 			i -= swapina(toswapina, a);
 			toswapina = 0;
 		}
+		if (i == -1)
+			break ;
 		i -= dist_rb_pa_rrb(a, b, i);
 	}
 }

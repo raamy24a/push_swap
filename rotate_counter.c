@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 14:22:48 by radib             #+#    #+#             */
-/*   Updated: 2025/05/20 17:35:32 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/23 16:31:39 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,28 @@
 
 int	sra(t_list **list)
 {
+	static int	i;
+
+	i++;
 	rotate(list);
-	return (1);
+	return (i);
 }
 
 int	srb(t_list **list)
 {
+	static int	i;
+
+	i++;
 	rotate(list);
-	return (1);
+	return (i);
 }
 
 int	srr(t_list **listb, t_list **lista)
 {
+	static int	i;
+
+	i++;
 	rotate(listb);
 	rotate(lista);
-	return (1);
+	return (i);
 }

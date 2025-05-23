@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:18:25 by radib             #+#    #+#             */
-/*   Updated: 2025/05/20 17:35:24 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/23 16:32:06 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,32 @@
 
 int	ssa(t_list *list_a)
 {
+	static int	i;
+
+	i++;
 	if (list_a -> next == NULL || !list_a)
-		return (1);
+		return (i);
 	swap(list_a);
-	return (1);
+	return (i);
 }
 
 int	ssb(t_list *list_b)
 {
+	static int	i;
+
+	i++;
 	if (list_b -> next == NULL || !list_b)
-		return (1);
+		return (i);
 	swap(list_b);
-	return (1);
+	return (i);
 }
 
 int	sss(t_list *list_a, t_list *list_b)
 {
+	static int	i;
+
+	i++;
 	sa (list_a);
 	sb (list_b);
-	return (1);
+	return (i);
 }

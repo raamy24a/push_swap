@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checkifgood.c                                      :+:      :+:    :+:   */
+/*   findchunkingsize.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/20 13:03:40 by radib             #+#    #+#             */
-/*   Updated: 2025/05/23 16:33:14 by radib            ###   ########.fr       */
+/*   Created: 2025/05/23 16:09:54 by radib             #+#    #+#             */
+/*   Updated: 2025/05/23 16:41:38 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_rotate_faster(t_list **b, int i)
+int	sis_rotate_faster(t_list **b, int i)
 {
 	t_list	*temp;
 	int		sizehalf;
@@ -33,27 +33,27 @@ int	is_rotate_faster(t_list **b, int i)
 	return (0);
 }
 
-int	dist_rb_pa_rrb(t_list **a, t_list **b, int i)
+int	sdist_rb_pa_rrb(t_list **a, t_list **b, int i)
 {
 	int	rrb_ra_pa;
 
-	rrb_ra_pa = is_rotate_faster(b, i);
+	rrb_ra_pa = sis_rotate_faster(b, i);
 	if (rrb_ra_pa == 0)
 	{
-		rrb(b);
+		srrb(b);
 		return (0);
 	}
 	if (rrb_ra_pa == 1)
 	{
-		rb(b);
+		srb(b);
 		return (0);
 	}
 	if (rrb_ra_pa == 2)
-		pa(a, b);
+		spa(a, b);
 	return (1);
 }
 
-int	swapina(int toswapina, t_list **a)
+int	sswapina(int toswapina, t_list **a)
 {
 	int	i;
 	int	j;
@@ -64,24 +64,24 @@ int	swapina(int toswapina, t_list **a)
 	{
 		if (toswapina == 1 && j == 1)
 		{
-			sa(*a);
+			ssa(*a);
 			return (j);
 		}
-		sa(*a);
+		ssa(*a);
 		if (toswapina == 1)
 			break ;
-		ra(a);
+		sra(a);
 		toswapina--;
 	}
 	while (i > 1)
 	{
-		rra(a);
+		srra(a);
 		i--;
 	}
 	return (j);
 }
 
-void	findorderr(int toswapina, int size, t_list **a, t_list **b)
+void	sfindorderr(int toswapina, int size, t_list **a, t_list **b)
 {
 	int		i;
 	t_list	*temp;
@@ -92,15 +92,15 @@ void	findorderr(int toswapina, int size, t_list **a, t_list **b)
 		temp = (*b);
 		if (temp->index == i - toswapina - 1)
 		{
-			pa(a, b);
+			spa(a, b);
 			toswapina++;
 			temp = (*b);
 		}
 		if (temp->index == i)
 		{
-			pa(a, b);
+			spa(a, b);
 			i--;
-			i -= swapina(toswapina, a);
+			i -= sswapina(toswapina, a);
 			toswapina = 0;
 		}
 		if (i == -1)
@@ -109,28 +109,14 @@ void	findorderr(int toswapina, int size, t_list **a, t_list **b)
 	}
 }
 
-void	findorder(int size, t_list **a, t_list **b)
+int	findchunkingsize(int size, int n, t_list **a, t_list **b)
 {
-	int	n;
-	int	total;
-	int	bestn;
+	int	totaloperations;
 
-	n = 1;
-	total = 999999999;
-	while (n < 20)
-	{
-		if (findchunkingsize(size, n, a, b) < total)
-		{
-			total = findchunkingsize(size, n, a, b);
-			bestn = n;
-		}
-	}
-	chunkingloop(size, bestn, a, b);
-	// else
-		// chunkingloop(size, 11.0, a, b);
-	// if (size < 110)
-	// 	chunkings(size, 0, a, b);
-	// else
-	// 	chunkingloop(size, 7.0, a, b);
-	findorderr(0, size, a, b);
+	totaloperations = 0;
+	schunkingloop(size, n, a, b);
+	totaloperations = sra(NULL) + srb(NULL) + srr(NULL, NULL)
+		+ ssa(NULL) + ssb(NULL) + sss(NULL, NULL) + spa(NULL, NULL)
+		+ spb(NULL, NULL) + srra(NULL) + srrb(NULL) + srrr(NULL, NULL);
+	return (totaloperations);
 }

@@ -6,13 +6,13 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 18:52:12 by radib             #+#    #+#             */
-/*   Updated: 2025/05/23 17:18:35 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/23 21:50:54 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	schunkingloop(int size, double n, t_list **a, t_list **b)
+int	schunkloop(int size, double n, t_list **cated_a, t_list **cated_b)
 {
 	t_list		*t;
 	int			i;
@@ -24,18 +24,18 @@ int	schunkingloop(int size, double n, t_list **a, t_list **b)
 		i = 0;
 		while (i < size - (1 - (k + 1) / n) * size)
 		{
-			t = (*a);
+			t = (*cated_a);
 			if (t->index > (size * (k / n)))
-				spb(a, b);
+				spb(cated_a, cated_b, 0);
 			else
-				sra(a);
+				sra(cated_a, 0);
 			t = t->next;
 			i++;
 		}
 		k--;
 	}
-	while (*a)
-		spb(a, b);
+	while (*cated_a)
+		spb(cated_a, cated_b, 0);
 	return (size);
 }
 

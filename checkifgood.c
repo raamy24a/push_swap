@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:03:40 by radib             #+#    #+#             */
-/*   Updated: 2025/05/23 19:19:16 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/23 22:58:36 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void	findorder(int size, t_list **a, t_list **b)
 
 	n = 3;
 	bestotal = 1999999999;
-	while (n < 12)
+	while (n < 13)
 	{
 		total = findchunkingsize(size, n, a);
 		if (total < bestotal)
@@ -126,7 +126,7 @@ void	findorder(int size, t_list **a, t_list **b)
 			bestotal = total;
 			bestn = n;
 		}
-		n++;
+		n += 1;
 	}
 	chunkingloop(size, bestn, a, b);
 	// else

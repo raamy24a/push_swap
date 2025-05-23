@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 16:09:54 by radib             #+#    #+#             */
-/*   Updated: 2025/05/23 19:32:41 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/23 22:22:24 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,8 @@ int	findchunkingsize(int size, int n, t_list **a)
 
 	duplicated_b = malloc(sizeof(t_list));
 	totaloperations = 0;
-	duplicated_a = list_duplicator(a, size);
-	schunkingloop(size, n, &duplicated_a, &duplicated_b);
+	duplicated_a = list_duplicator(a);
+	schunkloop(size, n, &duplicated_a, &duplicated_b);
 	sfindorderr(0, size, &duplicated_a, &duplicated_b);
 	free(duplicated_a);
 	free(duplicated_b);

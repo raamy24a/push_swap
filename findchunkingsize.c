@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 16:09:54 by radib             #+#    #+#             */
-/*   Updated: 2025/05/23 16:41:38 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/23 17:09:14 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,10 +111,13 @@ void	sfindorderr(int toswapina, int size, t_list **a, t_list **b)
 
 int	findchunkingsize(int size, int n, t_list **a, t_list **b)
 {
-	int	totaloperations;
+	int		totaloperations;
+	t_list	*duplicated_a;
 
 	totaloperations = 0;
-	schunkingloop(size, n, a, b);
+	duplicated_a = list_duplicator(a, size);
+	schunkingloop(size, n, duplicated_a, b);
+	free(duplicated_a);
 	totaloperations = sra(NULL) + srb(NULL) + srr(NULL, NULL)
 		+ ssa(NULL) + ssb(NULL) + sss(NULL, NULL) + spa(NULL, NULL)
 		+ spb(NULL, NULL) + srra(NULL) + srrb(NULL) + srrr(NULL, NULL);

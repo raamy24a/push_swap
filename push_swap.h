@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:20:31 by radib             #+#    #+#             */
-/*   Updated: 2025/05/21 19:26:24 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/23 19:11:36 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,17 @@ void	rr(t_list **listb, t_list **lista);
 void	sa(t_list *list_a);
 void	sb(t_list *list_a);
 void	ss(t_list *list_a, t_list *list_b);
-int		spa(t_list **list_a, t_list **list_b);
-int		spb(t_list **list_a, t_list **list_b);
-int		srra(t_list **list);
-int		srrb(t_list **list);
-int		srrr(t_list **list1, t_list **list2);
-int		sra(t_list **list);
-int		sra(t_list **list);
-int		srr(t_list **listb, t_list **lista);
-int		ssa(t_list *list_a);
-int		ssb(t_list *list_a);
-int		sss(t_list *list_a, t_list *list_b);
+int		spa(t_list **list_a, t_list **list_b, int mode);
+int		spb(t_list **list_a, t_list **list_b, int mode);
+int		srra(t_list **list, int mode);
+int		srrb(t_list **list, int mode);
+int		srrr(t_list **list1, t_list **list2, int mode);
+int		sra(t_list **list, int mode);
+int		srb(t_list **list, int mode);
+int		srr(t_list **listb, t_list **lista, int mode);
+int		ssa(t_list *list_a, int mode);
+int		ssb(t_list *list_a, int mode);
+int		sss(t_list *list_a, t_list *list_b, int mode);
 int		ft_atoi(const char *nptr);
 void	ft_lstadd_back(t_list **lst, int new);
 void	findorder(int size, t_list **a, t_list **b);
@@ -65,6 +65,8 @@ void	list_indexor(t_list *a, int *s_l, int size);
 int		chunking(int size, int i, t_list **a, t_list **b);
 int		chunkings(int size, int i, t_list **a, t_list **b);
 int		chunkingloop(int size, double n, t_list **a, t_list **b);
-
+int		findchunkingsize(int size, int n, t_list **a);
+t_list	*list_duplicator(t_list **a, int size);
+int		schunkingloop(int size, double n, t_list **a, t_list **b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:09:37 by radib             #+#    #+#             */
-/*   Updated: 2025/05/23 16:49:16 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/23 18:55:47 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	chose_sort(t_list **a)
 		sortsmedium(a, b);
 	else if (i > 4)
 		create_array(a, b, i);
+	free(b);
 }
 
 void	list_indexor(t_list *a, int *s_l, int size)

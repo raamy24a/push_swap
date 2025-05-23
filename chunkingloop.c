@@ -6,11 +6,38 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 18:52:12 by radib             #+#    #+#             */
-/*   Updated: 2025/05/22 16:05:03 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/23 17:18:35 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	schunkingloop(int size, double n, t_list **a, t_list **b)
+{
+	t_list		*t;
+	int			i;
+	double		k;
+
+	k = n - 1;
+	while (k)
+	{
+		i = 0;
+		while (i < size - (1 - (k + 1) / n) * size)
+		{
+			t = (*a);
+			if (t->index > (size * (k / n)))
+				spb(a, b);
+			else
+				sra(a);
+			t = t->next;
+			i++;
+		}
+		k--;
+	}
+	while (*a)
+		spb(a, b);
+	return (size);
+}
 
 int	chunkingloop(int size, double n, t_list **a, t_list **b)
 {

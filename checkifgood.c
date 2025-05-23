@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:03:40 by radib             #+#    #+#             */
-/*   Updated: 2025/05/23 16:33:14 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/23 19:19:16 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,19 +111,22 @@ void	findorderr(int toswapina, int size, t_list **a, t_list **b)
 
 void	findorder(int size, t_list **a, t_list **b)
 {
-	int	n;
-	int	total;
-	int	bestn;
+	double	n;
+	int		total;
+	double	bestn;
+	int		bestotal;
 
-	n = 1;
-	total = 999999999;
-	while (n < 20)
+	n = 3;
+	bestotal = 1999999999;
+	while (n < 12)
 	{
-		if (findchunkingsize(size, n, a, b) < total)
+		total = findchunkingsize(size, n, a);
+		if (total < bestotal)
 		{
-			total = findchunkingsize(size, n, a, b);
+			bestotal = total;
 			bestn = n;
 		}
+		n++;
 	}
 	chunkingloop(size, bestn, a, b);
 	// else

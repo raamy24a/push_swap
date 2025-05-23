@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 16:09:54 by radib             #+#    #+#             */
-/*   Updated: 2025/05/23 17:09:14 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/23 19:32:41 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,16 @@ int	sdist_rb_pa_rrb(t_list **a, t_list **b, int i)
 	rrb_ra_pa = sis_rotate_faster(b, i);
 	if (rrb_ra_pa == 0)
 	{
-		srrb(b);
+		srrb(b, 0);
 		return (0);
 	}
 	if (rrb_ra_pa == 1)
 	{
-		srb(b);
+		srb(b, 0);
 		return (0);
 	}
 	if (rrb_ra_pa == 2)
-		spa(a, b);
+		spa(a, b, 0);
 	return (1);
 }
 
@@ -64,18 +64,18 @@ int	sswapina(int toswapina, t_list **a)
 	{
 		if (toswapina == 1 && j == 1)
 		{
-			ssa(*a);
+			ssa(*a, 0);
 			return (j);
 		}
-		ssa(*a);
+		ssa(*a, 0);
 		if (toswapina == 1)
 			break ;
-		sra(a);
+		sra(a, 0);
 		toswapina--;
 	}
 	while (i > 1)
 	{
-		srra(a);
+		srra(a, 0);
 		i--;
 	}
 	return (j);
@@ -92,34 +92,39 @@ void	sfindorderr(int toswapina, int size, t_list **a, t_list **b)
 		temp = (*b);
 		if (temp->index == i - toswapina - 1)
 		{
-			spa(a, b);
+			spa(a, b, 0);
 			toswapina++;
 			temp = (*b);
 		}
 		if (temp->index == i)
 		{
-			spa(a, b);
+			spa(a, b, 0);
 			i--;
 			i -= sswapina(toswapina, a);
 			toswapina = 0;
 		}
 		if (i == -1)
 			break ;
-		i -= dist_rb_pa_rrb(a, b, i);
+		i -= sdist_rb_pa_rrb(a, b, i);
 	}
 }
 
-int	findchunkingsize(int size, int n, t_list **a, t_list **b)
+int	findchunkingsize(int size, int n, t_list **a)
 {
 	int		totaloperations;
 	t_list	*duplicated_a;
+	t_list	*duplicated_b;
 
+	duplicated_b = malloc(sizeof(t_list));
 	totaloperations = 0;
 	duplicated_a = list_duplicator(a, size);
-	schunkingloop(size, n, duplicated_a, b);
+	schunkingloop(size, n, &duplicated_a, &duplicated_b);
+	sfindorderr(0, size, &duplicated_a, &duplicated_b);
 	free(duplicated_a);
-	totaloperations = sra(NULL) + srb(NULL) + srr(NULL, NULL)
-		+ ssa(NULL) + ssb(NULL) + sss(NULL, NULL) + spa(NULL, NULL)
-		+ spb(NULL, NULL) + srra(NULL) + srrb(NULL) + srrr(NULL, NULL);
+	free(duplicated_b);
+	totaloperations = sra(NULL, 1) + srb(NULL, 1) + srr(NULL, NULL, 1)
+		+ ssa(NULL, 1) + ssb(NULL, 1) + sss(NULL, NULL, 1) + spa(NULL, NULL, 1)
+		+ spb(NULL, NULL, 1) + srra(NULL, 1) + srrb(NULL, 1)
+		+ srrr(NULL, NULL, 1);
 	return (totaloperations);
 }

@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:09:37 by radib             #+#    #+#             */
-/*   Updated: 2025/05/23 18:55:47 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/24 03:15:08 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ t_list	*list_creator(int argc, char*argv[])
 
 	a = malloc(sizeof(t_list));
 	if (!a)
-		return (0);
+		return (NULL);
 	a->content = ft_atoi(argv[argc - argc + 1]);
 	a->previous = NULL;
 	a->next = NULL;
@@ -108,6 +108,6 @@ int	main(int argc, char *argv[])
 		return (0);
 	a = list_creator(argc, argv);
 	chose_sort(&a);
-	free(a);
+	freelist(&a);
 	return (0);
 }

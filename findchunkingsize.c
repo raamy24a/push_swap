@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 16:09:54 by radib             #+#    #+#             */
-/*   Updated: 2025/05/23 22:22:24 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/24 03:01:50 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,8 @@ int	findchunkingsize(int size, int n, t_list **a)
 	duplicated_a = list_duplicator(a);
 	schunkloop(size, n, &duplicated_a, &duplicated_b);
 	sfindorderr(0, size, &duplicated_a, &duplicated_b);
-	free(duplicated_a);
-	free(duplicated_b);
+	freelist(&duplicated_a);
+	freelist(&duplicated_b);
 	totaloperations = sra(NULL, 1) + srb(NULL, 1) + srr(NULL, NULL, 1)
 		+ ssa(NULL, 1) + ssb(NULL, 1) + sss(NULL, NULL, 1) + spa(NULL, NULL, 1)
 		+ spb(NULL, NULL, 1) + srra(NULL, 1) + srrb(NULL, 1)

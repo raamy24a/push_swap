@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 14:22:48 by radib             #+#    #+#             */
-/*   Updated: 2025/05/19 18:45:28 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/24 03:05:53 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	rotate(t_list **list)
 	head = *list;
 	new_head = head->next;
 	last = *list;
-	while (last->next != NULL)
+	while (last->next)
 		last = last->next;
 	new_head->previous = NULL;
 	head->next = NULL;

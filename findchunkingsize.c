@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 16:09:54 by radib             #+#    #+#             */
-/*   Updated: 2025/05/24 03:01:50 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/25 02:04:18 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,9 @@ int	findchunkingsize(int size, int n, t_list **a)
 	t_list	*duplicated_b;
 
 	duplicated_b = malloc(sizeof(t_list));
+	duplicated_b ->next = NULL;
+	duplicated_b ->previous = NULL;
+	duplicated_b ->index = -1;
 	totaloperations = 0;
 	duplicated_a = list_duplicator(a);
 	schunkloop(size, n, &duplicated_a, &duplicated_b);

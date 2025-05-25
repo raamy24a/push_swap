@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:09:37 by radib             #+#    #+#             */
-/*   Updated: 2025/05/24 04:34:31 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/25 02:28:35 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	create_array(t_list **a, t_list **b, int size)
 
 void	chose_sort(t_list **a)
 {
-	t_list	**b;
+	t_list	*b;
 	t_list	*temp;
 	int		i;
 
@@ -50,13 +50,16 @@ void	chose_sort(t_list **a)
 		i++;
 	}
 	b = malloc(sizeof(t_list));
+	b->next = NULL;
+	b->previous = NULL;
+	b->index = -1;
 	if (i == 3)
 		sortsmall(a);
 	else if (i == 4)
-		sortsmedium(a, b);
+		sortsmedium(a, &b);
 	else if (i > 4)
-		create_array(a, b, i);
-	free(b);
+		create_array(a, &b, i);
+	freelist(&b);
 }
 
 void	list_indexor(t_list *a, int *s_l, int size)
@@ -93,6 +96,7 @@ t_list	*list_creator(int argc, char*argv[])
 	a->content = ft_atoi(argv[argc - argc + 1]);
 	a->previous = NULL;
 	a->next = NULL;
+	a->index = -1;
 	i = 2;
 	while (argv[i])
 	{

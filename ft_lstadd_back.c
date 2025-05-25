@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 10:32:49 by radib             #+#    #+#             */
-/*   Updated: 2025/05/24 05:01:29 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/25 02:08:45 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ void	ft_lstadd_back(t_list **lst, int new)
 	temp_list = malloc(sizeof(t_list));
 	temp -> next = temp_list;
 	temp -> next->content = new;
+	temp -> next->next = NULL;
 	temp_list ->previous = temp;
 }

@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 16:09:54 by radib             #+#    #+#             */
-/*   Updated: 2025/05/25 02:04:18 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/25 02:41:11 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	sis_rotate_faster(t_list **b, int i)
 
 	sizehalf = i / 2;
 	j = 0;
+	if (!b || !*b)
+		return (0);
 	temp = (*b);
 	if (b && temp->index == i)
 		return (2);

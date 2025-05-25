@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 14:22:43 by radib             #+#    #+#             */
-/*   Updated: 2025/05/25 04:10:44 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/26 00:19:15 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ void	sortfive(t_list **a, t_list **b)
 		else
 			ra(a);
 	}
-	if (((*a)->index == 3 && (*a)->next ->index == 4))
+	if (((*a)->index == 3 && (*a)->next ->index == 4
+			&& (*a)->next->next->index == 5))
 		;
 	else
 		sortsmall(a);

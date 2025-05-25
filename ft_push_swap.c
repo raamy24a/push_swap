@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 02:34:14 by radib             #+#    #+#             */
-/*   Updated: 2025/05/25 02:36:27 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/25 03:41:49 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ void	create_array(t_list **a, t_list **b, int size)
 	}
 	s_l = ft_sort_int_tab(list, size);
 	list_indexor((*a), s_l, size);
-	findorder(size, a, b);
+	if (size == 5)
+		sortfive(a, b);
+	else
+		findorder(size, a, b);
 	free(list);
 }
 

@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:20:31 by radib             #+#    #+#             */
-/*   Updated: 2025/05/24 02:56:54 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/25 03:41:21 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ int		findchunkingsize(int size, int n, t_list **a);
 t_list	*list_duplicator(t_list **a);
 int		schunkloop(int size, double n, t_list **cated_a, t_list **cated_b);
 void	freelist(t_list **list);
+void	sortfive(t_list **a, t_list **b);
 
 #endif

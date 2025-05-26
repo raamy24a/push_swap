@@ -6,13 +6,13 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 02:34:14 by radib             #+#    #+#             */
-/*   Updated: 2025/05/25 03:41:49 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/26 15:36:22 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	create_array(t_list **a, t_list **b, int size)
+int	create_array(t_list **a, t_list **b, int size)
 {
 	int		*list;
 	t_list	*temp;
@@ -28,15 +28,18 @@ void	create_array(t_list **a, t_list **b, int size)
 		temp = temp->next;
 	}
 	s_l = ft_sort_int_tab(list, size);
+	if (!checkduplicate(s_l))
+		return (0);
 	list_indexor((*a), s_l, size);
 	if (size == 5)
 		sortfive(a, b);
 	else
 		findorder(size, a, b);
 	free(list);
+	return (1);
 }
 
-void	chose_sort(t_list **a)
+int	chose_sort(t_list **a)
 {
 	t_list	*b;
 	t_list	*temp;
@@ -55,8 +58,10 @@ void	chose_sort(t_list **a)
 	else if (i == 4)
 		sortsmedium(a, &b);
 	else if (i > 4)
-		create_array(a, &b, i);
+		if (!create_array(a, &b, i))
+			return (0);
 	freelist(&b);
+	return (1);
 }
 
 void	list_indexor(t_list *a, int *s_l, int size)
@@ -111,7 +116,8 @@ int	main(int argc, char *argv[])
 	if (argc <= 1)
 		return (0);
 	a = list_creator(argc, argv);
-	chose_sort(&a);
+	if (!chose_sort(&a))
+		return (ft_printf("Error"));
 	freelist(&a);
 	return (0);
 }

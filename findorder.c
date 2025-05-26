@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:03:40 by radib             #+#    #+#             */
-/*   Updated: 2025/05/25 04:21:14 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/26 16:10:52 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void	findorder(int size, t_list **a, t_list **b)
 
 	n = 2;
 	bestotal = 1999999999;
-	while (n < 25)
+	while (n < 18)
 	{
 		total = findchunkingsize(size, n, a);
 		if (total < bestotal)

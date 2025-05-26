@@ -6,14 +6,16 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:13:03 by radib             #+#    #+#             */
-/*   Updated: 2025/05/19 14:12:29 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/26 18:13:18 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
 
 int	ft_atoi(const char *nptr)
 {
 	int		sign;
-	long	total;
+	int		total;
 
 	total = 0;
 	sign = 1;
@@ -29,8 +31,8 @@ int	ft_atoi(const char *nptr)
 	{
 		total *= 10;
 		total += *nptr - '0';
-		if ((total < 0) && sign == -1)
-			return (0);
+		if ((total > 0) && sign == -1)
+			return (-1);
 		if ((total < 0) && sign == 1)
 			return (-1);
 		nptr++;
@@ -38,8 +40,7 @@ int	ft_atoi(const char *nptr)
 	return (total * sign);
 }
 
-// int	main(void)
-// {
-// 	printf("monn atoi : %d\n", ft_atoi("15156156159151561"));
-// 	printf("vrai atoi : %d\n", atoi("15156156159151561"));
-// }
+int	main(int argc, char *argv[])
+{
+	printf("monn atoi : %d\n", ft_atoi(argv[argc - 1]));
+}

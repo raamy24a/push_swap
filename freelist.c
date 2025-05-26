@@ -6,13 +6,13 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 02:57:06 by radib             #+#    #+#             */
-/*   Updated: 2025/05/24 03:00:47 by radib            ###   ########.fr       */
+/*   Updated: 2025/05/26 18:00:44 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	freelist(t_list **list)
+int	freelist(t_list **list)
 {
 	t_list	*current;
 	t_list	*next;
@@ -24,4 +24,5 @@ void	freelist(t_list **list)
 		free(current);
 		current = next;
 	}
+	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 02:34:14 by radib             #+#    #+#             */
-/*   Updated: 2025/05/26 18:05:48 by radib            ###   ########.fr       */
+/*   Updated: 2025/07/22 16:10:02 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	create_array(t_list **a, t_list **b, int size)
+int	create_array(t_list **a, int size)
 {
 	int		*list;
 	t_list	*temp;
@@ -34,21 +34,15 @@ int	create_array(t_list **a, t_list **b, int size)
 		return (0);
 	}
 	list_indexor((*a), s_l, size);
-	if (size == 5)
-		sortfive(a, b);
-	else
-		findorder(size, a, b);
 	free(list);
 	return (1);
 }
 
-int	chose_sort(t_list **a)
+int	chose_sort(t_list **a, int i)
 {
 	t_list	*b;
 	t_list	*temp;
-	int		i;
 
-	i = 1;
 	temp = (*a);
 	while (temp->next)
 	{
@@ -56,13 +50,18 @@ int	chose_sort(t_list **a)
 		i++;
 	}
 	b = NULL;
-	if (i == 3)
+	if (!create_array(a, i))
+		return (freelist(&b));
+	if (i == 1 || i == 2)
+		sort_twoo_and_one(a, i);
+	else if (i == 3)
 		sortsmall(a);
 	else if (i == 4)
 		sortsmedium(a, &b);
-	else if (i > 4)
-		if (!create_array(a, &b, i))
-			return (freelist(&b));
+	else if (i == 5)
+		sortfive(a, &b);
+	else
+		findorder(i, a, &b);
 	freelist(&b);
 	return (1);
 }
@@ -93,7 +92,7 @@ t_list	*list_creator(int argc, char*argv[])
 {
 	t_list	*a;
 	int		i;
-	int		tempnbr;
+	long	tempnbr;
 
 	a = malloc(sizeof(t_list));
 	if (!a)
@@ -102,10 +101,16 @@ t_list	*list_creator(int argc, char*argv[])
 	a->previous = NULL;
 	a->next = NULL;
 	a->index = -1;
+	if (!ft_isdigit(argv[1]) || ft_atoi(argv[1]) == -20000000000)
+		return (0);
 	i = 2;
 	while (argv[i])
 	{
+		if (!ft_isdigit(argv[i]))
+			return (0);
 		tempnbr = ft_atoi(argv[i]);
+		if (tempnbr == -20000000000)
+			return (0);
 		ft_lstadd_back(&a, tempnbr);
 		i++;
 	}
@@ -119,10 +124,12 @@ int	main(int argc, char *argv[])
 	if (argc <= 1)
 		return (0);
 	a = list_creator(argc, argv);
-	if (!chose_sort(&a))
+	if (a == 0)
+		return (ft_putstr_fd("Error\n", 2));
+	if (!chose_sort(&a, 1))
 	{
 		freelist(&a);
-		return (ft_printf("%s\n", "Error"));
+		return (ft_putstr_fd("Error\n", 2));
 	}
 	freelist(&a);
 	return (0);

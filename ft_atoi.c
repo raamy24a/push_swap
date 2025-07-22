@@ -6,13 +6,13 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:13:03 by radib             #+#    #+#             */
-/*   Updated: 2025/05/26 18:13:18 by radib            ###   ########.fr       */
+/*   Updated: 2025/07/22 16:05:35 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "push_swap.h"
 
-int	ft_atoi(const char *nptr)
+long	ft_atoi(const char *nptr)
 {
 	int		sign;
 	int		total;
@@ -32,15 +32,43 @@ int	ft_atoi(const char *nptr)
 		total *= 10;
 		total += *nptr - '0';
 		if ((total > 0) && sign == -1)
-			return (-1);
+			return (-20000000000);
 		if ((total < 0) && sign == 1)
-			return (-1);
+			return (-20000000000);
 		nptr++;
 	}
-	return (total * sign);
+	return ((long)(total * sign));
 }
 
-int	main(int argc, char *argv[])
+int	ft_putstr_fd(char *s, int fd)
 {
-	printf("monn atoi : %d\n", ft_atoi(argv[argc - 1]));
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
+	return (1);
 }
+
+int	ft_isdigit(char *argv)
+{
+	int	x;
+
+	x = 0;
+	while (argv[x])
+	{
+		if (!(argv[x] >= '0' && argv[x] <= '9'))
+			return (0);
+		else
+			x++;
+	}
+	return (1);
+}
+
+// int	main(int argc, char *argv[])
+// {
+// 	printf("monn atoi : %d\n", ft_atoi(argv[argc - 1]));
+// }

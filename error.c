@@ -6,22 +6,27 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 14:59:46 by radib             #+#    #+#             */
-/*   Updated: 2025/05/26 15:21:43 by radib            ###   ########.fr       */
+/*   Updated: 2025/07/22 15:04:45 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	checkduplicate(int *s_l)
 {
 	int	i;
+	int	x;
 
 	i = 0;
-	if (s_l[i] == 0 && s_l[i + 1] == 0)
-		return (0);
-	while (s_l[i + 1])
+	while (s_l[i])
 	{
-		if (s_l[i] == s_l[i + 1])
-			return (0);
+		x = 0;
+		while (s_l[x])
+		{
+			if (x != i && s_l[i] == s_l[x])
+				return (0);
+			x++;
+		}
 		i++;
 	}
 	return (1);
 }
+

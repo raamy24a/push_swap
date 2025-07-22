@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:20:31 by radib             #+#    #+#             */
-/*   Updated: 2025/05/26 18:01:02 by radib            ###   ########.fr       */
+/*   Updated: 2025/07/22 16:06:32 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		srr(t_list **listb, t_list **lista, int mode);
 int		ssa(t_list *list_a, int mode);
 int		ssb(t_list *list_a, int mode);
 int		sss(t_list *list_a, t_list *list_b, int mode);
-int		ft_atoi(const char *nptr);
+long	ft_atoi(const char *nptr);
 void	ft_lstadd_back(t_list **lst, int new);
 void	findorder(int size, t_list **a, t_list **b);
 int		*ft_sort_int_tab(int *tab, int size);
@@ -71,5 +71,8 @@ int		schunkloop(int size, double n, t_list **cated_a, t_list **cated_b);
 int		freelist(t_list **list);
 void	sortfive(t_list **a, t_list **b);
 int		checkduplicate(int *s_l);
+int		ft_putstr_fd(char *s, int fd);
+void	sort_twoo_and_one(t_list **a, int i);
+int		ft_isdigit(char *argv);
 
 #endif

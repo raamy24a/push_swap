@@ -6,12 +6,18 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 14:22:43 by radib             #+#    #+#             */
-/*   Updated: 2025/05/26 00:19:15 by radib            ###   ########.fr       */
+/*   Updated: 2025/07/22 15:28:17 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	sort_twoo_and_one(t_list **a, int i)
+{
+	if (i == 2)
+		if ((*a)->content > (*a)->next->content)
+			ra(a);
+}
 void	sortsmall(t_list **a)
 {
 	while ((*a)->content > (*a)->next->next->content)

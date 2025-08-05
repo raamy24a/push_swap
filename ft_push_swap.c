@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 02:34:14 by radib             #+#    #+#             */
-/*   Updated: 2025/07/22 16:10:02 by radib            ###   ########.fr       */
+/*   Updated: 2025/08/05 15:08:44 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ int	create_array(t_list **a, int size)
 		temp = temp->next;
 	}
 	s_l = ft_sort_int_tab(list, size);
-	if (!checkduplicate(s_l))
+	if (!s_l)
+		return (2);
+	if (!checkduplicate(s_l, size))
 	{
 		free(list);
 		return (0);
@@ -120,12 +122,22 @@ t_list	*list_creator(int argc, char*argv[])
 int	main(int argc, char *argv[])
 {
 	t_list	*a;
+	t_list	*temp;
 
 	if (argc <= 1)
 		return (0);
 	a = list_creator(argc, argv);
-	if (a == 0)
+	temp = a;
+	if (!a)
 		return (ft_putstr_fd("Error\n", 2));
+	while (temp->next->next)
+	{
+		if (temp < temp->next)
+			break ;
+		temp = temp->next;
+	}
+	if (!temp->next->next)
+		return (0);
 	if (!chose_sort(&a, 1))
 	{
 		freelist(&a);

@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 14:22:43 by radib             #+#    #+#             */
-/*   Updated: 2025/07/22 15:28:17 by radib            ###   ########.fr       */
+/*   Updated: 2025/08/05 14:20:27 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,25 @@ void	sortsmall(t_list **a)
 
 void	sortsmedium(t_list **a, t_list **b)
 {
-	pb(a, b);
-	sortsmall(a);
-	if ((*a)->next->next->content < ((*b)->content))
+	int	passed;
+
+	passed = 0;
+	while (passed != 1)
 	{
-		pa(a, b);
-		ra(a);
+		if ((*a)->index == 0)
+		{
+			pb(a, b);
+			passed++;
+		}
+		else
+			ra(a);
 	}
-	else if ((*a)->content > (*b)->content)
-		pa(a, b);
+	if (((*a)->index == 2 && (*a)->next ->index == 3
+			&& (*a)->next->next->index == 4))
+		;
 	else
-	{
-		while (((*a)->content < (*b)->content))
-			rra(a);
-		rra(a);
-		pa(a, b);
-	}
-	while ((*a)->next->next->next->content < ((*a)->content))
-		rra(a);
+		sortsmall(a);
+	pa(a, b);
 }
 
 void	sortfive(t_list **a, t_list **b)

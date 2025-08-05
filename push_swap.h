@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:20:31 by radib             #+#    #+#             */
-/*   Updated: 2025/07/22 16:06:32 by radib            ###   ########.fr       */
+/*   Updated: 2025/08/05 13:53:35 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_list	*list_duplicator(t_list **a);
 int		schunkloop(int size, double n, t_list **cated_a, t_list **cated_b);
 int		freelist(t_list **list);
 void	sortfive(t_list **a, t_list **b);
-int		checkduplicate(int *s_l);
+int		checkduplicate(int *s_l, int size);
 int		ft_putstr_fd(char *s, int fd);
 void	sort_twoo_and_one(t_list **a, int i);
 int		ft_isdigit(char *argv);

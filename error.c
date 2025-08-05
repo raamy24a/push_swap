@@ -6,20 +6,20 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 14:59:46 by radib             #+#    #+#             */
-/*   Updated: 2025/07/22 15:04:45 by radib            ###   ########.fr       */
+/*   Updated: 2025/08/05 11:35:34 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	checkduplicate(int *s_l)
+int	checkduplicate(int *s_l, int size)
 {
 	int	i;
 	int	x;
 
 	i = 0;
-	while (s_l[i])
+	while (i < size)
 	{
-		x = 0;
-		while (s_l[x])
+		x = i + 1;
+		while (x < size)
 		{
 			if (x != i && s_l[i] == s_l[x])
 				return (0);
@@ -29,4 +29,3 @@ int	checkduplicate(int *s_l)
 	}
 	return (1);
 }
-

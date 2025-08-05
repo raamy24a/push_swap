@@ -1,5 +1,6 @@
 {
 	"files.associations": {
 		"push_swap.h": "c"
-	}
+	},
+	"cmake.sourceDirectory": "/home/radib/19/PUSHSWAP/push_swap_visualizer/build/_deps/sfml-src/examples/island"
 }

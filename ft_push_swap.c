@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 02:34:14 by radib             #+#    #+#             */
-/*   Updated: 2025/08/05 15:08:44 by radib            ###   ########.fr       */
+/*   Updated: 2025/08/06 17:57:48 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,25 +119,23 @@ t_list	*list_creator(int argc, char*argv[])
 	return (a);
 }
 
+t_list	*list_creator_split(argc, argv)
+{
+	
+}
+
 int	main(int argc, char *argv[])
 {
 	t_list	*a;
-	t_list	*temp;
 
 	if (argc <= 1)
 		return (0);
-	a = list_creator(argc, argv);
-	temp = a;
+	if (argc > 3)
+		a = list_creator(argc, argv);
+	if (argc == 3)
+		a = list_creator_split(argc, argv);
 	if (!a)
 		return (ft_putstr_fd("Error\n", 2));
-	while (temp->next->next)
-	{
-		if (temp < temp->next)
-			break ;
-		temp = temp->next;
-	}
-	if (!temp->next->next)
-		return (0);
 	if (!chose_sort(&a, 1))
 	{
 		freelist(&a);

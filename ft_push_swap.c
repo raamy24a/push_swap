@@ -6,20 +6,18 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 02:34:14 by radib             #+#    #+#             */
-/*   Updated: 2025/08/07 16:13:58 by radib            ###   ########.fr       */
+/*   Updated: 2025/08/07 18:25:20 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	create_array(t_list **a, int size)
+int	create_array(t_list **a, int size, int i)
 {
 	int		*list;
 	t_list	*temp;
-	int		i;
 	int		*s_l;
 
-	i = 0;
 	temp = (*a);
 	list = malloc(sizeof(int) * size);
 	while (i++ < size)
@@ -30,11 +28,6 @@ int	create_array(t_list **a, int size)
 	s_l = ft_sort_int_tab(list, size);
 	if (!s_l)
 		return (2);
-	if (!checkduplicate(s_l, size))
-	{
-		free(list);
-		return (0);
-	}
 	list_indexor((*a), s_l, size);
 	free(list);
 	return (1);
@@ -52,7 +45,7 @@ int	chose_sort(t_list **a, int i)
 		i++;
 	}
 	b = NULL;
-	if (!create_array(a, i))
+	if (!create_array(a, i, 0))
 		return (freelist(&b));
 	if (i == 1 || i == 2)
 		sort_twoo_and_one(a, i);
@@ -114,19 +107,24 @@ t_list	*list_creator_split(char *argv[], int i, long tempnbr, int x)
 				ft_lstadd_back(&a, tempnbr);
 		}
 	}
+	if (tempnbr == -1 && i == 2 && x == 0 && a->content == 0)
+		return (0);
 	return (a);
 }
 
 int	main(int argc, char *argv[])
 {
 	t_list	*a;
+	int		i;
 
 	if (argc <= 1)
 		return (0);
-	else
-		a = list_creator_split(argv, 0, -1, 0);
+	a = list_creator_split(argv, 0, -1, 0);
 	if (!a)
 		return (ft_putstr_fd("Error\n", 2));
+	i = array_len(a);
+	if (array_test (&a, i, 0) == 0 || checkduplicate(a, i, 0, 0) == 0)
+		return (0);
 	if (!chose_sort(&a, 1))
 	{
 		freelist(&a);

@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 02:34:14 by radib             #+#    #+#             */
-/*   Updated: 2025/08/06 17:57:48 by radib            ###   ########.fr       */
+/*   Updated: 2025/08/07 16:13:58 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,38 +90,31 @@ void	list_indexor(t_list *a, int *s_l, int size)
 	}
 }
 
-t_list	*list_creator(int argc, char*argv[])
+t_list	*list_creator_split(char *argv[], int i, long tempnbr, int x)
 {
 	t_list	*a;
-	int		i;
-	long	tempnbr;
+	char	**number;
 
 	a = malloc(sizeof(t_list));
 	if (!a)
 		return (NULL);
-	a->content = ft_atoi(argv[argc - argc + 1]);
-	a->previous = NULL;
-	a->next = NULL;
-	a->index = -1;
-	if (!ft_isdigit(argv[1]) || ft_atoi(argv[1]) == -20000000000)
-		return (0);
-	i = 2;
-	while (argv[i])
+	node_ini(&a);
+	while (argv[++i])
 	{
-		if (!ft_isdigit(argv[i]))
-			return (0);
-		tempnbr = ft_atoi(argv[i]);
-		if (tempnbr == -20000000000)
-			return (0);
-		ft_lstadd_back(&a, tempnbr);
-		i++;
+		number = ft_split(argv[i], ' ');
+		x = -1;
+		while (number[++x])
+		{
+			if (i == 1 && x == 0)
+				a->content = ft_atoi(number[x]);
+			tempnbr = ft_atoi(number[x]);
+			if (!ft_isdigit(number[x]) || tempnbr == -20000000000)
+				return (0);
+			if (!(i == 1 && x == 0))
+				ft_lstadd_back(&a, tempnbr);
+		}
 	}
 	return (a);
-}
-
-t_list	*list_creator_split(argc, argv)
-{
-	
 }
 
 int	main(int argc, char *argv[])
@@ -130,10 +123,8 @@ int	main(int argc, char *argv[])
 
 	if (argc <= 1)
 		return (0);
-	if (argc > 3)
-		a = list_creator(argc, argv);
-	if (argc == 3)
-		a = list_creator_split(argc, argv);
+	else
+		a = list_creator_split(argv, 0, -1, 0);
 	if (!a)
 		return (ft_putstr_fd("Error\n", 2));
 	if (!chose_sort(&a, 1))

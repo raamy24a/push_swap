@@ -4,8 +4,8 @@ SOURCES = ft_push_swap.c push.c reverse_rotate.c swap.c rotate.c \
 ft_atoi.c ft_lstadd_back.c printf/ft_printf.c printf/ft_putnbr.c \
  findorder.c ft_sort_int_tab.c push_counter.c reverse_rotate_counter.c \
  rotate_counter.c swap_counter.c handsort.c \
- chunkingloop.c findchunkingsize.c list_duplicator.c freelist.c error.c
-
+ chunkingloop.c findchunkingsize.c list_duplicator.c freelist.c error.c \
+libft.a
 OBJECTS = $(SOURCES:.c=.o)
 
 CC = gcc

@@ -6,11 +6,18 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 02:31:53 by radib             #+#    #+#             */
-/*   Updated: 2025/08/06 16:00:26 by radib            ###   ########.fr       */
+/*   Updated: 2025/08/07 15:43:13 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	node_ini(t_list **lst)
+{
+	(*lst)->index = -1;
+	(*lst)->next = NULL;
+	(*lst)->previous = NULL;
+}
 
 t_list	*ft_lstlast(t_list *lst)
 {

@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:20:31 by radib             #+#    #+#             */
-/*   Updated: 2025/08/05 13:53:35 by radib            ###   ########.fr       */
+/*   Updated: 2025/08/07 15:42:24 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include "libft.h"
 
 typedef struct s_list
 {
@@ -51,10 +52,8 @@ int		ssa(t_list *list_a, int mode);
 int		ssb(t_list *list_a, int mode);
 int		sss(t_list *list_a, t_list *list_b, int mode);
 long	ft_atoi(const char *nptr);
-void	ft_lstadd_back(t_list **lst, int new);
 void	findorder(int size, t_list **a, t_list **b);
 int		*ft_sort_int_tab(int *tab, int size);
-void	ft_lstadd_front(t_list **destination, t_list **source);
 void	reverse_rotate(t_list **list);
 void	rotate(t_list **list);
 void	swap(t_list *list);
@@ -71,8 +70,10 @@ int		schunkloop(int size, double n, t_list **cated_a, t_list **cated_b);
 int		freelist(t_list **list);
 void	sortfive(t_list **a, t_list **b);
 int		checkduplicate(int *s_l, int size);
-int		ft_putstr_fd(char *s, int fd);
 void	sort_twoo_and_one(t_list **a, int i);
+int		ft_putstr_fd(char *s, int fd);
+void	ft_lstadd_back(t_list **lst, int new);
 int		ft_isdigit(char *argv);
+void	node_ini(t_list **lst);
 
 #endif

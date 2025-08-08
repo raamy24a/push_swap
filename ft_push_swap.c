@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 02:34:14 by radib             #+#    #+#             */
-/*   Updated: 2025/08/07 18:25:20 by radib            ###   ########.fr       */
+/*   Updated: 2025/08/08 17:58:30 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ t_list	*list_creator_split(char *argv[], int i, long tempnbr, int x)
 		while (number[++x])
 		{
 			if (i == 1 && x == 0)
-				a->content = ft_atoi(number[x]);
-			tempnbr = ft_atoi(number[x]);
+				a->content = ft_atoi(number[x], 1, 0, 0);
+			tempnbr = ft_atoi(number[x], 1, 0, 0);
 			if (!ft_isdigit(number[x]) || tempnbr == -20000000000)
 				return (0);
 			if (!(i == 1 && x == 0))
@@ -123,8 +123,10 @@ int	main(int argc, char *argv[])
 	if (!a)
 		return (ft_putstr_fd("Error\n", 2));
 	i = array_len(a);
-	if (array_test (&a, i, 0) == 0 || checkduplicate(a, i, 0, 0) == 0)
+	if (array_test (&a, i, 0) == 0)
 		return (0);
+	if (checkduplicate(a, i, 0, 0) == 0)
+		return (ft_putstr_fd("Error\n", 2));
 	if (!chose_sort(&a, 1))
 	{
 		freelist(&a);

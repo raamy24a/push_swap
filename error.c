@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 14:59:46 by radib             #+#    #+#             */
-/*   Updated: 2025/08/07 18:25:35 by radib            ###   ########.fr       */
+/*   Updated: 2025/08/08 15:44:11 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	array_len(t_list *a)
 		temp = temp->next;
 		i++;
 	}
-	return (i);
+	return (i + 1);
 }
 
 int	array_test(t_list **a, int size, int i)
@@ -68,7 +68,7 @@ int	array_test(t_list **a, int size, int i)
 		temp = temp->next;
 	}
 	i = 0;
-	while (i + 1 < size + 1)
+	while (i + 1 < size)
 	{
 		if (list[i] < list[i + 1])
 			i++;
@@ -76,7 +76,7 @@ int	array_test(t_list **a, int size, int i)
 			break ;
 	}
 	free(list);
-	if (i != size)
+	if (i + 1 != size)
 		return (1);
 	return (0);
 }

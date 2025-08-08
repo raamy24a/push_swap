@@ -6,7 +6,7 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:20:31 by radib             #+#    #+#             */
-/*   Updated: 2025/08/07 18:25:09 by radib            ###   ########.fr       */
+/*   Updated: 2025/08/08 17:58:41 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		srr(t_list **listb, t_list **lista, int mode);
 int		ssa(t_list *list_a, int mode);
 int		ssb(t_list *list_a, int mode);
 int		sss(t_list *list_a, t_list *list_b, int mode);
-long	ft_atoi(const char *nptr);
+long	ft_atoi(const char *nptr, int sign, int total, int i);
 void	findorder(int size, t_list **a, t_list **b);
 int		*ft_sort_int_tab(int *tab, int size);
 void	reverse_rotate(t_list **list);

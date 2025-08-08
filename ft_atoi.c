@@ -6,38 +6,35 @@
 /*   By: radib <radib@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:13:03 by radib             #+#    #+#             */
-/*   Updated: 2025/08/05 11:54:06 by radib            ###   ########.fr       */
+/*   Updated: 2025/08/08 18:07:22 by radib            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atoi(const char *nptr)
+long	ft_atoi(const char *nptr, int sign, int total, int i)
 {
-	int		sign;
-	int		total;
-
-	total = 0;
-	sign = 1;
-	while ((*nptr >= 9 && *nptr <= 13) || *nptr == ' ')
-		nptr++;
-	if (*nptr == '-' || *nptr == '+')
+	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == ' ')
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
 	{
-		if (*nptr == '-')
+		if (nptr[i] == '-')
 			sign *= -1;
-		nptr++;
+		i++;
 	}
-	while (*nptr >= '0' && *nptr <= '9')
+	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		total *= 10;
-		total += *nptr - '0';
-		if ((total > 0) && sign == -1)
+		total += nptr[i] - '0';
+		if ((total * sign > 0) && sign == -1)
 			return (-20000000000);
 		if ((total < 0) && sign == 1)
 			return (-20000000000);
-		nptr++;
+		i++;
 	}
-	return ((long)(total * sign));
+	if (!(nptr[i]) && !(sign == -1 && total == 0 && i == 1))
+		return ((long)(total * sign));
+	return (-20000000000);
 }
 
 int	ft_putstr_fd(char *s, int fd)
@@ -60,7 +57,7 @@ int	ft_isdigit(char *argv)
 	x = 0;
 	while (argv[x])
 	{
-		if (!(argv[x] >= '0' && argv[x] <= '9'))
+		if (!(argv[x] >= '0' && argv[x] <= '9') && !(argv[x] == '-'))
 			return (0);
 		else
 			x++;
